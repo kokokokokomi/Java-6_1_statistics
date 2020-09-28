@@ -27,42 +27,42 @@ class StatsServiceTest {
     }
 
     @Test
-    void findMaxMonthNumber() {
-        StatsService service = new StatsService();
-
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 8;
-        long actual = service.findMaxMonthNumber(purchases);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMinMonthNumber() {
-        StatsService service = new StatsService();
-
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 8;
-        long actual = service.findMinMonthNumber(purchases);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void findMonthQuantityUnderAverage() {
+    void findMaxIndex() {
         StatsService service = new StatsService();
 
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 5;
-        long actual = service.findMonthQuantityUnderAverage(purchases);
+        long actual = service.findMaxIndex(purchases);
         assertEquals(expected, actual);
     }
 
     @Test
-    void findMonthQuantityOverAverage() {
+    void findMinIndex() {
+        StatsService service = new StatsService();
+
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 8;
+        long actual = service.findMinIndex(purchases);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void findQuantityBelowAverage() {
         StatsService service = new StatsService();
 
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 5;
-        long actual = service.findMonthQuantityOverAverage(purchases);
+        long actual = service.findQuantityBelowAverage(purchases);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void findQuantityOverAverage() {
+        StatsService service = new StatsService();
+
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+        long actual = service.findQuantityOverAverage(purchases);
         assertEquals(expected, actual);
     }
 }

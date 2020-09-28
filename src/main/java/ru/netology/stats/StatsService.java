@@ -12,83 +12,52 @@ public class StatsService {
     }
 
     public long calculateAverageSales(long[] purchases) {
-        long sum = 0;
-        for (long purchase : purchases) {
-            // аналог sum = sum + purchase;
-            sum += purchase;
-        }
+        long sum = calculateSum(purchases);
+
         // считаем средние продажи: сумму продаж (sum) делим на количество элементов (length) в массиве;
-        long AverageSales = sum / purchases.length;
-        return AverageSales;
+        long averageSales = sum / purchases.length;
+        return averageSales;
     }
 
-    public long findMaxMonthNumber(long[] purchases) {
-        int number = 0;
-        // i++ аналог i = i+1;
-        for (int i = 0; i <= 12; i++) {
+    public long findMaxIndex(long[] purchases) {
+        int index = 0;
+        for (int i = 0; i < purchases.length; i++) {
+            index = purchases[i] > purchases[index] ? i : index;
         }
-        long currentMax = purchases[0];
-        for (long purchase : purchases) {
-            if (currentMax < purchase) {
-                currentMax = purchase;
-            }
-        }
-        long MaxMonthNumber = purchases[number];
-        return MaxMonthNumber;
+
+        return index;
     }
 
-    public long findMinMonthNumber(long[] purchases) {
-        int number = 0;
-        // i++ аналог i = i+1;
-        for (int i = 0; i <= 12; i++) {
+    public long findMinIndex(long[] purchases) {
+        int index = 0;
+        for (int i = 0; i < purchases.length; i++) {
+            index = purchases[i] < purchases[index] ? i : index;
         }
-        long currentMin = purchases[0];
-        for (long purchase : purchases) {
-            if (purchase < currentMin) {
-                currentMin = purchase;
-            }
-        }
-        long MinMonthNumber = purchases[number];
-        return MinMonthNumber;
+
+        return index;
     }
 
-    public long findMonthQuantityUnderAverage(long[] purchases) {
-        long sum = 0;
-        for (long purchase : purchases) {
-            // аналог sum = sum + purchase;
-            sum += purchase;
-        }
-        // считаем средние продажи: сумму продаж (sum) делим на количество элементов (length) в массиве;
-        long AverageSales = sum / purchases.length;
-        int i = 1;
+    public long findQuantityBelowAverage(long[] purchases) {
+
+        long averageSales = calculateAverageSales(purchases);
         int quantity = 0;
         for (long purchase : purchases) {
-            if (purchase < AverageSales) {
-                quantity = i++;
+            if (purchase < averageSales) {
+                quantity++;
             }
         }
-
-        long MonthQuantityUnderAverage = quantity;
-        return MonthQuantityUnderAverage;
+        return quantity;
     }
 
-    public long findMonthQuantityOverAverage(long[] purchases) {
-        long sum = 0;
-        for (long purchase : purchases) {
-            // аналог sum = sum + purchase;
-            sum += purchase;
-        }
-        // считаем средние продажи: сумму продаж (sum) делим на количество элементов (length) в массиве;
-        long AverageSales = sum / purchases.length;
-        int i = 1;
+    public long findQuantityOverAverage(long[] purchases) {
+
+        long averageSales = calculateAverageSales(purchases);
         int quantity = 0;
         for (long purchase : purchases) {
-            if (purchase > AverageSales) {
-                quantity = i++;
+            if (purchase > averageSales) {
+                quantity++;
             }
         }
-
-        long MonthQuantityOverAverage = quantity;
-        return MonthQuantityOverAverage;
+        return quantity;
     }
 }
