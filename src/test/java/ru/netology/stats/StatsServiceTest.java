@@ -31,7 +31,7 @@ class StatsServiceTest {
         StatsService service = new StatsService();
 
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 5;
+        long expected = 8;
         long actual = service.findMaxIndex(purchases);
         assertEquals(expected, actual);
     }
@@ -41,7 +41,7 @@ class StatsServiceTest {
         StatsService service = new StatsService();
 
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 8;
+        long expected = 9;
         long actual = service.findMinIndex(purchases);
         assertEquals(expected, actual);
     }

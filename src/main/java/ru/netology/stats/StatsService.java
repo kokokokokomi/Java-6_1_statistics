@@ -22,19 +22,19 @@ public class StatsService {
     public long findMaxIndex(long[] purchases) {
         int index = 0;
         for (int i = 0; i < purchases.length; i++) {
-            index = purchases[i] > purchases[index] ? i : index;
+            index = purchases[i] >= purchases[index] ? i : index;
         }
 
-        return index;
+        return index+1;
     }
 
     public long findMinIndex(long[] purchases) {
         int index = 0;
         for (int i = 0; i < purchases.length; i++) {
-            index = purchases[i] < purchases[index] ? i : index;
+            index = purchases[i] <= purchases[index] ? i : index;
         }
 
-        return index;
+        return index+1;
     }
 
     public long findQuantityBelowAverage(long[] purchases) {
